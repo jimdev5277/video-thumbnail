@@ -14,7 +14,8 @@ IMAGE_ROWS = 7
 PADDING = 5
 FONT_SIZE = 16
 IMAGE_WIDTH = 1536
-FONT_NAME = "HelveticaNeue.ttc"
+# 字体为当前项目真正的具体路径，不能是相对路径，根据自己的实际情况修改
+FONT_NAME = "/root/video-thumbnail/Msyh.ttf"
 BACKGROUND_COLOR = "#fff"
 TEXT_COLOR = "#000"
 TIMESTAMP_COLOR = "#fff"
@@ -31,7 +32,7 @@ def get_random_filename(ext):
 def create_thumbnail(filename):
     print('Processing:', filename)
 
-    jpg_name = '%s.jpg' % filename
+    jpg_name = '%s.preview.jpg' % filename
     if os.path.exists(jpg_name):
         print('Thumbnail assumed exists!')
         return
@@ -112,6 +113,6 @@ if __name__ == "__main__":
         print('Switch to root %s...' % root)
         os.chdir(root)
         for file in files:
-            ext_regex = r"\.(mov|mp4|mpg|mov|mpeg|flv|wmv|avi|mkv)$"
+            ext_regex = r"\.(mov|mp4|mpg|mov|mpeg|flv|wmv|avi|mkv|TS|ts|rmvb)$"
             if re.search(ext_regex, file, re.IGNORECASE):
                 create_thumbnail(file)
